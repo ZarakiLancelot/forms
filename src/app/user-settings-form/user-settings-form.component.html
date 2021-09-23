@@ -34,9 +34,9 @@
         <div class="form-group">
             <label for="subscriptionType">Subscription Type</label>
             <select id="subscriptionType" class="form-control" name="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
-                <option>Monthly</option>
-                <option>Annual</option>
-                <option>Lifetime</option>
+                <option *ngFor="let type of subscriptionTypes | async">
+                    {{ type }}
+                </option>
             </select>
         </div>
 
@@ -60,6 +60,9 @@
             <input type="color" name="color" id="color" class="form-control" [(ngModel)]="userSettings.color">
         </div>
 
+        <div [hidden]="!postError" class="alert alert-danger">
+            {{ postErrorMessage }}
+        </div>
         <button class="btn btn-primary">Send</button>
     </form>
 </div>
