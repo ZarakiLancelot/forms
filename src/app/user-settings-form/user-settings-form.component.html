@@ -10,6 +10,10 @@
             <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">Ingrese un nombre</div>
         </div>
 
+        <button type="button" class="btn btn-primary" name="singleModel" [(ngModel)]="singleModel" btnCheckbox btnCheckboxTrue="On" btnCheckboxFalse="Off">
+            {{ singleModel }}
+        </button>
+
         <div class="form-check form-group">
             <input class="form-check-input" type="checkbox" name="emailOffers" id="emailOffers" [(ngModel)]="userSettings.emailOffers">
             <label for="emailOffers" class="form-check-label">Email Special Offers</label>
@@ -17,7 +21,12 @@
 
         <h5>User Interface Style</h5>
         <div class="form-group">
-            <div class="form-check">
+            <div class="btn-group">
+                <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle" btnRadio="Light" tabindex="0" role="button">Light</label>
+                <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle" btnRadio="Medium" tabindex="0" role="button">Medium</label>
+                <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle" name="interfaceStyle" btnRadio="Dark" tabindex="0" role="button">Dark</label>
+            </div>
+            <!-- <div class="form-check">
                 <input class="form-check-input" type="radio" name="interfaceStyle" id="lightInterface" value="light" checked [(ngModel)]="userSettings.interfaceStyle">
                 <label for="lightInterface" class="form-check-label">Light</label>
             </div>
@@ -28,7 +37,7 @@
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="interfaceStyle" id="darkInterface" value="dark" [(ngModel)]="userSettings.interfaceStyle">
                 <label for="darkInterface" class="form-check-label">Dark</label>
-            </div>
+            </div> -->
         </div>
 
         <div class="form-group">
@@ -54,6 +63,27 @@
             <label for="date">Date</label>
             <input type="date" name="date" id="date" class="form-control" [(ngModel)]="userSettings.date">
         </div>
+
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="text" placeholder="Start Date" name="startDate" id="startDate" class="form-control" [(ngModel)]="startDate" bsDatepicker>
+        </div>
+        Start Date: {{ startDate }}
+        <hr>
+
+        <div class="form-group">
+            <label for="startTime">Start Time</label>
+            <timepicker [(ngModel)]="startTime" name="startTime" id="startTime"></timepicker>
+        </div>
+        Start Time: {{ startTime }}
+        <hr>
+
+        <div class="form-group">
+            User Rating
+            <rating [(ngModel)]="userRating" [max]="maxRating" name="userRating" id="userRating" [titles]="['one','two','three']"></rating>
+        </div>
+        User Rating: {{ userRating }}
+        <hr>
 
         <div class="form-group">
             <label for="color">Color</label>
